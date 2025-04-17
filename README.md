@@ -1,12 +1,12 @@
 # Sistem Manajemen Kos
-Sistem ini menggabungkan fitur terbaik dari sistem manajemen kos yang ada dan menambahkan teknologi baru agar memiliki ciri khas tersendiri. Sistem ini akan berbasis web dan mobile dengan integrasi AI untuk meningkatkan efisiensi dan kenyamanan pengelolaan kos.
+This system combines the best features of existing boarding house management systems and adds new technology to give it its own unique character. This system will be web and mobile based with AI integration to improve the efficiency and convenience of boarding house management.
 
 ## Features
 - Online room booking
 - Contracts and payments
 - Complaint management
 - Notifications
-- 
+
 ## Tools
 - Laravel
 - Mysql
