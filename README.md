@@ -17,8 +17,8 @@ Team-6
 | Name | Path |
 | :-----: | :---: |
 | Poltak Alfredo Philander Sitorus | Fullstack Programmer |
-| Fraansisca | Fullstack Programmer |
-| Theresia Sekar | Fullstack Programmer |
+| Fraanscisca Sriwahyuni| Fullstack Programmer |
+| Theresia Sekar Nirmala Sari | Fullstack Programmer |
 
 ## Database Design
 https://drawsql.app/teams/pols/diagrams/database-manajemen-kos
