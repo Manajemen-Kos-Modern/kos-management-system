@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #fcd34d;
+    padding: 1.5rem;
+    height: 100vh;
+    position: fixed;
+}
+
+.main-content {
+    margin-left: 20%;
+    padding: 2rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d97706;
+    margin-bottom: 1rem;
+}
+
+.content-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.left-section {
+    flex: 2;
+}
+
+.main-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.right-section {
+    flex: 1;
+    background-color: #fff7db;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-box h2 {
+    color: #d97706;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.payment-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.total-payment h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.booking-button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+.specifications {
+    margin-top: 2rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.scrollable {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
