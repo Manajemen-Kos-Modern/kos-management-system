@@ -12,11 +12,12 @@ return new class extends Migration {
     {
         Schema::create('kamars', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('nomor_kamar');
             $table->string('tipe_kamar');
-            $table->decimal('harga');
+            $table->string('gambar_kamar')->nullable();
+            $table->decimal('harga', 10, 2);
             $table->enum('status', ['terisi', 'belum_terisi']);
-            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

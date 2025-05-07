@@ -3,22 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kamar extends Model
-{
+{   
+    use HasFactory;
     protected $fillable = [
         'nomor_kamar',
         'tipe_kamar',
         'harga',
         'status',
         'user_id',
-        'created_at',
-        'updated_at'
+        'gambar_kamar',
     ];
 
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function Keluhans()
     {
