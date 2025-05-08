@@ -24,4 +24,9 @@ class Kamar extends Model
     {
         return $this->hasMany(Keluhan::class);
     }
+    // Menambahkan relasi ke Pemeliharaan
+    public function pemeliharaans()
+    {
+        return $this->hasMany(Pemeliharaan::class);
+    }
 }
