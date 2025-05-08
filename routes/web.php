@@ -103,6 +103,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('pemeliharaan', PemeliharaanController::class)->except(['show', 'edit', 'update']);
 });
 // ==========================
+// PEMELIHARAAN (ADMIN SAJA)
+// ==========================
+Route::middleware('auth')->prefix('admin/pemeliharaan')->name('admin.pemeliharaan.')->group(function () {
+    Route::get('/', [PemeliharaanController::class, 'index'])->name('index');
+    Route::get('/create', [PemeliharaanController::class, 'create'])->name('create');
+    Route::post('/', [PemeliharaanController::class, 'store'])->name('store');
+    Route::get('/{pemeliharaan}/edit', [PemeliharaanController::class, 'edit'])->name('edit');
+    Route::put('/{pemeliharaan}', [PemeliharaanController::class, 'update'])->name('update');
+    Route::delete('/{pemeliharaan}', [PemeliharaanController::class, 'destroy'])->name('destroy');
+});
+
+
+
+// ==========================
 // LOGOUT
 // ==========================
 Route::post('/logout', function () {

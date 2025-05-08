@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Pemeliharaan;
@@ -7,39 +8,40 @@ use Illuminate\Http\Request;
 
 class PemeliharaanController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'admin']);
-    }
-
     public function index()
     {
-        $data = Pemeliharaan::with('kamar')->latest()->get();
-        return view('pemeliharaan.index', compact('data'));
+        $pemeliharaans = Pemeliharaan::with('kamar')->latest()->get();
+        return view('admin.pemeliharaan.index', compact('pemeliharaans'));
     }
 
     public function create()
-    {
-        $kamars = Kamar::all();
-        return view('pemeliharaan.create', compact('kamars'));
-    }
+{
+    $kamars = Kamar::whereDoesntHave('pemeliharaans', function($query) {
+        $query->where('status', 'sedang-proses');
+    })->get();
+    
+    return view('admin.pemeliharaan.create', compact('kamars'));
+}
 
     public function store(Request $request)
     {
-        $request->validate([
-            'kamar_id' => 'required|exists:kamars,id',
-            'status' => 'required|string',
-            'keterangan' => 'nullable|string'
+        $validated = $request->validate([
+            'kamar_id' => 'required|exists:kamars,id|unique:pemeliharaans,kamar_id,NULL,id,status,sedang-proses',
+            'keterangan' => 'required|string|max:500',
+            'status' => 'required|in:sedang-proses,selesai',
         ]);
 
-        Pemeliharaan::create($request->all());
+        Pemeliharaan::create($validated);
 
-        return redirect()->route('pemeliharaan.index')->with('success', 'Data pemeliharaan ditambahkan');
+        return redirect()->route('admin.pemeliharaan.index')
+            ->with('success', 'Data pemeliharaan berhasil ditambahkan');
     }
 
-    public function destroy($id)
+    public function destroy(Pemeliharaan $pemeliharaan)
     {
-        Pemeliharaan::destroy($id);
-        return redirect()->route('pemeliharaan.index')->with('success', 'Data pemeliharaan dihapus');
+        $pemeliharaan->delete();
+
+        return redirect()->route('admin.pemeliharaan.index')
+            ->with('success', 'Data pemeliharaan berhasil dihapus');
     }
 }
