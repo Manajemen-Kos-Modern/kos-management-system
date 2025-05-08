@@ -1,35 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Kamar</title>
-    <!-- (CSS tetap seperti yang kamu buat sebelumnya) -->
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
     <div class="container">
-        <h2>Edit Kamar</h2>
+        <h1>Edit Data Kamar</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <form action="{{ route('admin.kamar.update', $kamar->id) }}" method="POST">
             @csrf
             @method('PUT')
-            
-            <label for="nomor_kamar">Nomor Kamar</label>
-            <input type="text" name="nomor_kamar" id="nomor_kamar" value="{{ $kamar->nomor_kamar }}" required>
 
-            <label for="tipe_kamar">Tipe Kamar</label>
-            <input type="text" name="tipe_kamar" id="tipe_kamar" value="{{ $kamar->tipe_kamar }}" required>
+            <div class="mb-3">
+                <label for="nomor_kamar" class="form-label">Nomor Kamar</label>
+                <input type="text" class="form-control" id="nomor_kamar" name="nomor_kamar"
+                    value="{{ $kamar->nomor_kamar }}" required>
+            </div>
 
-            <label for="harga">Harga</label>
-            <input type="number" name="harga" id="harga" value="{{ $kamar->harga }}" required>
+            <div class="mb-3">
+                <label for="tipe_kamar" class="form-label">Tipe Kamar</label>
+                <input type="text" class="form-control" id="tipe_kamar" name="tipe_kamar"
+                    value="{{ $kamar->tipe_kamar }}" required>
+            </div>
 
-            <label for="status">Status</label>
-            <select name="status" id="status" required>
-                <option value="belum_terisi" {{ $kamar->status == 'belum_terisi' ? 'selected' : '' }}>Belum Terisi</option>
-                <option value="terisi" {{ $kamar->status == 'terisi' ? 'selected' : '' }}>Terisi</option>
-            </select>
+            <div class="mb-3">
+                <label for="harga" class="form-label">Harga</label>
+                <input type="number" class="form-control" id="harga" name="harga" value="{{ $kamar->harga }}"
+                    required>
+            </div>
 
-            <button type="submit">Update</button>
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status" required>
+                    <option value="belum_terisi" {{ $kamar->status == 'belum_terisi' ? 'selected' : '' }}>Belum Terisi
+                    </option>
+                    <option value="terisi" {{ $kamar->status == 'terisi' ? 'selected' : '' }}>Terisi</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('admin.kamar.index') }}" class="btn btn-secondary">← Kembali</a>
         </form>
-        <a href="{{ route('admin.kamar.index') }}">← Kembali ke daftar</a>
     </div>
-</body>
-</html>
+@endsection

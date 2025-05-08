@@ -4,77 +4,90 @@ namespace App\Http\Controllers;
 
 use App\Models\Kamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KamarController extends Controller
 {
-    // Menampilkan semua kamar
+    private function authorizeAdmin()
+    {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+    }
+
     public function index()
     {
+        $this->authorizeAdmin();
+
         $kamars = Kamar::all();
         return view('admin.kamar.index', compact('kamars'));
     }
 
-    // Menampilkan form tambah kamar
     public function create()
     {
+        $this->authorizeAdmin();
+
         return view('admin.kamar.create');
     }
 
-    // Menyimpan kamar baru
     public function store(Request $request)
     {
+        $this->authorizeAdmin();
+
         $request->validate([
-            'nomor_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'status' => 'required|in:belum_terisi,terisi',
+            'nomor_kamar' => 'required',
+            'tipe_kamar' => 'required',
+            'harga' => 'required|numeric|min:0',
+            'status' => 'required',
         ]);
 
         Kamar::create([
-            'nomor_kamar' => $request->nomor_kamar,
-            'tipe_kamar' => $request->tipe_kamar,
-            'harga' => $request->harga,
-            'status' => $request->status,
-            'user_id' => auth()->id(), // otomatis ambil user login
+            'user_id' => Auth::id(),
+            'nomor_kamar' => $request->input('nomor_kamar'),
+            'tipe_kamar' => $request->input('tipe_kamar'),
+            'harga' => $request->input('harga'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('admin.kamar.index')->with('success', 'Kamar berhasil ditambahkan.');
     }
 
-    // Menampilkan form edit kamar
-    public function edit($id)
+
+    public function show(Kamar $kamar)
     {
-        $kamar = Kamar::findOrFail($id);
+        $this->authorizeAdmin();
+
+        return view('admin.kamar.show', compact('kamar'));
+    }
+
+    public function edit(Kamar $kamar)
+    {
+        $this->authorizeAdmin();
+
         return view('admin.kamar.edit', compact('kamar'));
     }
 
-    // Mengupdate kamar
-    public function update(Request $request, $id)
+    public function update(Request $request, Kamar $kamar)
     {
+        $this->authorizeAdmin();
+
         $request->validate([
-            'nomor_kamar' => 'required|string|max:255',
-            'tipe_kamar' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'status' => 'required|in:belum_terisi,terisi',
+            'nomor_kamar' => 'required',
+            'tipe_kamar' => 'required',
+            'harga' => 'required|numeric|min:0',
+            'status' => 'required',
         ]);
 
-        $kamar = Kamar::findOrFail($id);
-        $kamar->update([
-            'nomor_kamar' => $request->nomor_kamar,
-            'tipe_kamar' => $request->tipe_kamar,
-            'harga' => $request->harga,
-            'status' => $request->status,
-        ]);
+        $kamar->update($request->all());
 
         return redirect()->route('admin.kamar.index')->with('success', 'Kamar berhasil diupdate.');
     }
 
-    // Menghapus kamar
-    public function destroy($id)
+    public function destroy(Kamar $kamar)
     {
-        $kamar = Kamar::findOrFail($id);
-        $kamar->delete();
+        $this->authorizeAdmin();
 
+        $kamar->delete();
         return redirect()->route('admin.kamar.index')->with('success', 'Kamar berhasil dihapus.');
     }
 }
