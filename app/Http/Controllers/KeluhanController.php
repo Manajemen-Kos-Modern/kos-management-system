@@ -32,7 +32,7 @@ class KeluhanController extends Controller
         // Kembalikan view edit dengan data keluhan
         return view('admin.keluhan.edit', compact('keluhan'));
     }
-   
+
     public function update(Request $request, $id)
 {
     $request->validate([

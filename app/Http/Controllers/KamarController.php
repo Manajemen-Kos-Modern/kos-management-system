@@ -64,6 +64,9 @@ class KamarController extends Controller
     {
         $this->authorizeAdmin();
 
+        // panggil data kamar berdasarkan ID
+        // $kamar = Kamar::findOrFail($id);
+
         return view('admin.kamar.edit', compact('kamar'));
     }
 

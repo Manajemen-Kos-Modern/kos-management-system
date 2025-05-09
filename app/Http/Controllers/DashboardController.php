@@ -20,6 +20,7 @@ class DashboardController extends Controller
     {
         return view('pengguna.dashboard');
     }
+    
     public function index()
     {
         // Contoh data kamar (bisa diganti dengan data dari database)

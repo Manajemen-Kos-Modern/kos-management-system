@@ -163,7 +163,7 @@
         <!-- Right Section -->
         <div class="right-section">
             <h2>Sign in</h2>
-            <p>New user? <a href="#">Create an account</a></p>
+            <!-- <p>New user? <a href="#">Create an account</a></p> -->
             <form method="POST" action="{{ route('admin.login') }}">
                 @csrf
                 <input type="email" name="email" placeholder="Email address" required class="input-field">
