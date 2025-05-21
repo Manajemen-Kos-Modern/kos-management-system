@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KamarController;
-use App\Http\Controllers\KeluhanController;
-use App\Http\Controllers\PembayaranController;
-use App\Http\Controllers\PemeliharaanController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\KamarController;
+use App\Http\Controllers\Admin\KeluhanController;
+use App\Http\Controllers\Admin\PembayaranController;
+use App\Http\Controllers\Admin\PemeliharaanController;
 
 
 // Halaman utama
