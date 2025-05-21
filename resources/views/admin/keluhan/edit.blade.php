@@ -8,7 +8,6 @@
     
     <a href="{{ route('admin.keluhan.index') }}">Back to Keluhan</a>
 
-
     <form action="{{ route('admin.keluhan.update', $keluhan->id) }}" method="POST">
 
         @csrf

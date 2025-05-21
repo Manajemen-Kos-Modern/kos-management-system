@@ -8,6 +8,8 @@ use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KeluhanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PemeliharaanController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Pemilik\DashboardController as PemilikDashboardController;
 
 
 // Halaman utama
