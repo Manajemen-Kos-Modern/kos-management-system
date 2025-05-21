@@ -15,7 +15,9 @@ return new class extends Migration {
             $table->foreignId('kamar_id')->constrained();
             $table->enum('status', ['sedang-proses', 'selesai']);
             $table->text('keterangan');
+            $table->timestamp('jadwal');
             $table->timestamps();
+
         });
     }
 

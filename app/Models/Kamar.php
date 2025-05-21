@@ -17,12 +17,18 @@ class Kamar extends Model
         'gambar_kamar',
     ];
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function Keluhans()
+    
+    public function keluhan()
     {
         return $this->hasMany(Keluhan::class);
+    }
+
+    public function kontraks()
+    {
+        return $this->hasMany(Kontrak::class);
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Owner;
 
+use App\Http\Controllers\Controller;
 use App\Models\Kamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ManajemenKamarController extends Controller
+class RoomManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,9 +27,19 @@ class ManajemenKamarController extends Controller
 
         $kamars = $query->paginate(10);
 
-        return view('admin.manajemenKamar.index', [
+        return view('owner.roomManagement.index', [
             'title' => 'Manajemen Kamar',
             'kamars' => $kamars,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('owner.roomManagement.create', [
+            'title' => 'Tambah Kamar Baru'
         ]);
     }
 
@@ -57,6 +68,33 @@ class ManajemenKamarController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Kamar $kamar)
+    {
+        // Eager load user relationship if it exists
+        if ($kamar->user_id) {
+            $kamar->load('user');
+        }
+
+        return view('owner.roomManagement.edit', [
+            'title' => 'Edit Kamar',
+            'kamar' => $kamar
+        ]);
+    }
+
+    /** 
+     * Show the confirmation page before deletion
+     */
+    public function delete(Kamar $kamar)
+    {
+        return view('owner.roomManagement.delete', [
+            'title' => 'Hapus Kamar',
+            'kamar' => $kamar
+        ]);
+    }
+
+    /** 
      * Update the specified resource in storage.
      */
     public function update(Request $request, Kamar $kamar)
@@ -70,15 +108,19 @@ class ManajemenKamarController extends Controller
         ]);
 
         // Handle status change
-        if ($validated['status'] === 'belum_terisi') {
+        if ($validated['status'] === 'belum_terisi' && $kamar->status === 'terisi') {
+            // Jika kamar diubah dari terisi menjadi kosong, hapus referensi user
             $validated['user_id'] = null;
         } 
-        else {
-            $validated['user_id'] = $kamar->user_id ?? $validated['user_id'];
+        else if ($validated['status'] === 'terisi') {
+            // Jika status terisi, pertahankan user_id yang ada
+            $validated['user_id'] = $kamar->user_id;
         }
 
         // Handle image upload
-        $validated['gambar_kamar'] = $this->handleImageUpload($request, $kamar);
+        if ($request->hasFile('gambar_kamar')) {
+            $validated['gambar_kamar'] = $this->handleImageUpload($request, $kamar);
+        }
 
         // Update data
         $kamar->update($validated);
@@ -92,6 +134,12 @@ class ManajemenKamarController extends Controller
      */
     public function destroy(Kamar $kamar)
     {
+        // Periksa apakah kamar sedang terisi oleh penghuni
+        if ($kamar->status === 'terisi') {
+            return redirect()->route('manajemenKamar.index')
+                ->with('error', 'Kamar tidak dapat dihapus karena sedang terisi penghuni');
+        }
+
         // Delete image if exists
         if ($kamar->gambar_kamar) {
             Storage::disk('public')->delete($kamar->gambar_kamar);
@@ -99,7 +147,8 @@ class ManajemenKamarController extends Controller
 
         $kamar->delete();
 
-        return back()->with('success', 'Kamar berhasil dihapus');
+        return redirect()->route('manajemenKamar.index')
+            ->with('success', 'Kamar berhasil dihapus');
     }
 
     /**
@@ -112,7 +161,7 @@ class ManajemenKamarController extends Controller
         }
 
         // Hapus gambar lama jika ada
-        if ($kamar?->gambar_kamar) {
+        if ($kamar && $kamar->gambar_kamar) {
             Storage::disk('public')->delete($kamar->gambar_kamar);
         }
 

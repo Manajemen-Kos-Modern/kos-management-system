@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->foreignId('kamar_id')->constrained();
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->enum('status', ['berlangsung', 'selesai']);
+            $table->enum('status', ['aktif', 'nonaktif']);
             $table->timestamps();
         });
     }

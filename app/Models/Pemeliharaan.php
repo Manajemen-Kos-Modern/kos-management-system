@@ -10,10 +10,16 @@ class Pemeliharaan extends Model
         'kamar_id',
         'status',
         'keterangan',
+        'jadwal',
         'created_at',
         'updated_at'
     ];
-    public function Kamar()
+
+    protected $casts = [
+        'jadwal' => 'datetime',
+    ];
+    
+    public function kamar()
     {
         return $this->belongsTo(Kamar::class);
     }

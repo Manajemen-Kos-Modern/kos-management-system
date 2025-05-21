@@ -11,16 +11,19 @@ class Pembayaran extends Model
         'user_id',
         'harga',
         'metode_pembayaran',
+        'bukti_transfer',
         'status',
         'created_at',
         'updated_at'
     ];
-    public function Kontrak()
+
+    
+    public function kontrak()
     {
         return $this->belongsTo(Kontrak::class);
     }
 
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

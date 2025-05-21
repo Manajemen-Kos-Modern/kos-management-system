@@ -15,12 +15,12 @@ class Keluhan extends Model
         'created_at',
         'updated_at'
     ];
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function Kamar()
+    public function kamar()
     {
         return $this->belongsTo(Kamar::class);
     }

@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Kontrak extends Model
-{
+{   
+    protected $table = 'kontraks';
+
     protected $fillable = [
         'user_id',
         'kamar_id',
@@ -15,13 +17,24 @@ class Kontrak extends Model
         'created_at',
         'updated_at'
     ];
-    public function Users()
+
+    protected $casts = [
+        'tanggal_mulai' => 'date',
+        'tanggal_selesai' => 'date',
+    ];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function Kamars()
+    public function kamar()
     {
         return $this->belongsTo(Kamar::class);
+    }
+
+    public function pembayarans()
+    {
+        return $this->hasMany(Pembayaran::class);
     }
 }

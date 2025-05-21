@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('keluhans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->integer('kamar_id');
+            $table->unsignedBigInteger('kamar_id');
             $table->text('keterangan');
             $table->enum('status', ['diterima', 'proses', 'selesai']);
             $table->text('jenis_keluhan');

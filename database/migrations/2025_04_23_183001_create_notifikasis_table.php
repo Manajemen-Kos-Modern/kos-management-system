@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->text('pesan');
-            $table->enum('status', ['terkirim', 'belum_terkirim']);
+            $table->enum('status', ['terkirim', 'dibaca']);
             $table->datetime('waktu_kirim');
             $table->timestamps();
         });
