@@ -1,0 +1,327 @@
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 20%;
+    background-color: #fcd34d;
+    padding: 1.5rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 5%;
+    padding: 1rem 0.5rem;
+}
+
+.menu-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.menu-list li span {
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.menu-list li a:hover {
+    color: #1f2937;
+}
+
+.sidebar.collapsed .menu-list li a {
+    display: none;
+}
+
+.sidebar.collapsed .menu-list li span {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 20%;
+    padding: 2rem;
+    transition: margin-left 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 7%;
+    padding: 2rem 1rem;
+}
+
+/* Welcome Message */
+.welcome-message {
+    background-color: #fef3c7;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.welcome-message h1 {
+    color: #d97706;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+/* Room Grid */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.room-card {
+    background-color: #fff7db;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+}
+
+.room-card img {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+room-card h2 {
+    color: #d97706;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.room-card ul {
+    list-style: none;
+    padding: 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.room-card ul li {
+    margin-bottom: 0.25rem;
+}
+
+.room-card button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.room-card button:hover {
+    background-color: #d97706;
+}
+
+/* Chatbot Styles */
+.chatbot-toggle {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: #f59e0b;
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chatbot-container {
+    position: fixed;
+    bottom: 5rem;
+    left: 1rem;
+    width: 20rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.chatbot-header {
+    background-color: #f59e0b;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-messages {
+    padding: 1rem;
+    height: 10rem;
+    overflow-y: auto;
+}
+
+.chatbot-input-container {
+    padding: 0.75rem;
+    border-top: 1px solid #d1d5db;
+    display: flex;
+}
+
+.chatbot-input-container input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem 0 0 0.5rem;
+    outline: none;
+}
+
+.chatbot-input-container button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
+}
+
+/* Edit Profile Container */
+.profile-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+    text-align: center;
+    color: #f4a300;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="file"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f4a300;
+    border-radius: 6px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* Save Button */
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-save {
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #e6b800;
+}
+
+/* Profile Photo Wrapper */
+.profile-photo-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px auto; /* Tengahkan dan beri sedikit jarak bawah */
+}
+
+.profile-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #f4a300;
+    background-color: #f2f2f2;
+}
+
+.profile-photo-wrapper input[type="file"] {
+    display: none;
+}
+
+.camera-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.camera-icon i {
+    color: #333;
+    font-size: 14px;
+}

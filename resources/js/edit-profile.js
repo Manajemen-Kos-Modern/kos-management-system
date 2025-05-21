@@ -1,3 +1,17 @@
+function previewProfilePhoto(input) {
+    const preview = document.getElementById('profilePreview');
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.src = e.target.result; // Update preview image source
+        };
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "{{ asset('images/default-profile.png') }}"; // Fallback to default image
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.querySelector(".sidebar");
     const mainContent = document.querySelector(".main-content");
@@ -53,16 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // Close chatbot when the close button is clicked
     chatbotClose.addEventListener("click", () => {
         chatbotContainer.style.display = "none";
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const logoutButton = document.querySelector('.logout-button');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', (e) => {
-                if (!confirm('Apakah Anda yakin ingin logout?')) {
-                    e.preventDefault();
-                }
-            });
-        }
     });
 });

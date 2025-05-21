@@ -55,14 +55,14 @@ document.addEventListener("DOMContentLoaded", () => {
         chatbotContainer.style.display = "none";
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const logoutButton = document.querySelector('.logout-button');
-        if (logoutButton) {
-            logoutButton.addEventListener('click', (e) => {
-                if (!confirm('Apakah Anda yakin ingin logout?')) {
-                    e.preventDefault();
-                }
-            });
-        }
-    });
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const logoutButton = document.querySelector('.logout-button');
+    //     if (logoutButton) {
+    //         logoutButton.addEventListener('click', (e) => {
+    //             if (!confirm('Apakah Anda yakin ingin logout?')) {
+    //                 e.preventDefault();
+    //             }
+    //         });
+    //     }
+    // });
 });

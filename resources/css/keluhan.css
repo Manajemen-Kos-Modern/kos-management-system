@@ -1,0 +1,95 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    background-color: #fbe36a;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.sidebar a {
+    margin: 15px 0;
+    font-size: 22px;
+    text-decoration: none;
+    color: #333;
+}
+
+.content {
+    margin-left: 80px;
+    padding: 30px;
+}
+
+.header {
+    background-color: #fff3cd;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #d48806;
+    margin-bottom: 20px;
+}
+
+.report-btn {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #fff;
+    color: #f39c12;
+}
+
+.detail-btn {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.done-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}

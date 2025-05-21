@@ -1,4 +1,3 @@
-{{-- filepath: c:\Users\Shaun\Desktop\laravel12Test\laravel12Test\resources\views\dashboard\pengguna.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,15 +24,11 @@
                 </li>
                 <li>
                     <span>💳</span>
-                    <a href="#">Pembayaran</a>
-                </li>
-                <li>
-                    <span>📄</span>
-                    <a href="#">Informasi Kontrak</a>
+                    <a href="#">Riwayat Pembayaran</a>
                 </li>
                 <li>
                     <span>📜</span>
-                    <a href="#">Riwayat Pembayaran</a>
+                    <a href="#">Informasi Pembayaran & Kontrak</a>
                 </li>
                 <li>
                     <span>📢</span>
@@ -41,11 +36,11 @@
                 </li>
                 <li>
                     <span>🔔</span>
-                    <a href="#">Notifikasi</a>
+                    <a href="{{ route('pengguna.notification') }}">Notifikasi</a>
                 </li>
                 <li>
                     <span>👤</span>
-                    <a href="#">Profil Pengguna</a>
+                    <a href="{{ route('profile.show') }}">Profil</a>
                 </li>
                 <li>
                     <span>🚪</span>

@@ -1,0 +1,310 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9fafb;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #fcd34d;
+    padding: 1.5rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sidebar.collapsed {
+    width: 5%;
+    padding: 1rem 0.5rem;
+    align-items: center;
+}
+
+.sidebar .icon {
+    font-size: 20px;
+    margin: 20px 0;
+    color: #dc9354;
+    cursor: pointer;
+}
+
+/* Sidebar Menu */
+.menu-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.menu-list li span {
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.menu-list li a {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.menu-list li a:hover {
+    color: #1f2937;
+}
+
+.sidebar.collapsed .menu-list li a {
+    display: none;
+}
+
+.sidebar.collapsed .menu-list li span {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 20%;
+    padding: 2rem;
+    transition: margin-left 0.3s ease, padding 0.3s ease;
+    flex-grow: 1;
+    position: relative;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 7%;
+    padding: 2rem 1rem;
+}
+
+/* Header */
+.header {
+    background-color: #ffe88a;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #dc9354;
+    border: 1px solid #dc9354;
+}
+
+/* Welcome Message */
+.welcome-message {
+    background-color: #fef3c7;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.welcome-message h1 {
+    color: #d97706;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+/* Room Cards */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.room-card {
+    background-color: #fff7db;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+}
+
+.room-card img {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.room-card h2 {
+    color: #d97706;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.room-card ul {
+    list-style: none;
+    padding: 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.room-card ul li {
+    margin-bottom: 0.25rem;
+}
+
+.room-card button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.room-card button:hover {
+    background-color: #d97706;
+}
+
+/* Detail Button */
+.detail-button {
+    display: inline-block;
+    background-color: #f59e0b;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.detail-button:hover {
+    background-color: #d97706;
+}
+
+/* Logout Button */
+.logout-button {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.logout-button:hover {
+    color: #e76f51;
+    text-decoration: none;
+}
+
+/* Notification */
+.notification {
+    border: 1px solid #f4a261;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: white;
+    color: #333;
+}
+
+/* Section */
+.section {
+    margin-top: 30px;
+}
+
+/* Chatbot Styles */
+.chatbot-toggle {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: #f59e0b;
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.chatbot-container {
+    position: fixed;
+    bottom: 5rem;
+    left: 1rem;
+    width: 20rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.chatbot-header {
+    background-color: #f59e0b;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-messages {
+    padding: 1rem;
+    height: 10rem;
+    overflow-y: auto;
+}
+
+.chatbot-input-container {
+    padding: 0.75rem;
+    border-top: 1px solid #d1d5db;
+    display: flex;
+}
+
+.chatbot-input-container input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem 0 0 0.5rem;
+    outline: none;
+}
+
+.chatbot-input-container button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
+}
+
+/* Floating Corner Icon */
+.corner-icon {
+    width: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
