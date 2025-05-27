@@ -19,14 +19,16 @@ class PembayaranController extends Controller
     /**
      * Konfirmasi pembayaran (ubah status menjadi 'sukses').
      */
-    public function konfirmasi($id)
-    {
-        $pembayaran = Pembayaran::findOrFail($id);
-        $pembayaran->status = 'sukses';
-        $pembayaran->save();
+  
+public function verify($id)
+{
+    $pembayaran = Pembayaran::findOrFail($id);
+    // Contoh: update status jadi sukses, sesuaikan sesuai logic kamu
+    $pembayaran->status = 'sukses';
+    $pembayaran->save();
 
-        return redirect()->back()->with('success', 'Pembayaran berhasil dikonfirmasi.');
-    }
+    return redirect()->route('admin.pembayarans.index')->with('success', 'Pembayaran berhasil diverifikasi.');
+}
 
     /**
      * Tolak pembayaran (ubah status menjadi 'gagal').

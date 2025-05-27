@@ -93,11 +93,13 @@ Route::middleware('auth')->group(function () {
 // ==========================
 // PEMBAYARAN (ADMIN SAJA)
 // ==========================
-Route::middleware(['auth', 'checkrole:admin'])->prefix('admin/pembayarans')->name('pembayarans.')->group(function () {
+Route::middleware('auth')->prefix('admin/pembayarans')->name('admin.pembayarans.')->group(function () {
     Route::get('/', [PembayaranController::class, 'index'])->name('index');
     Route::post('/{id}/konfirmasi', [PembayaranController::class, 'konfirmasi'])->name('konfirmasi');
     Route::post('/{id}/tolak', [PembayaranController::class, 'tolak'])->name('tolak');
+    Route::post('/{id}/verify', [PembayaranController::class, 'verify'])->name('verify'); // tambah ini
 });
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('pemeliharaan', PemeliharaanController::class)->except(['show', 'edit', 'update']);
