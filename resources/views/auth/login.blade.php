@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     @vite(['resources/css/login.css'])
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-left">
-            <h1>📋 Cuboid</h1>
-            <h2>One tool for your<br>whole team needs</h2>
-            <p><span class="dot"></span><span class="dot"></span><span class="dot"></span> 3k+ people joined us, now it’s your turn</p>
+            <h1>🏠 Selamat Datang di Kost Kita </h1>
+            <h2>Semua kebutuhan kost-mu,<br>cukup dalam satu genggaman</h2>
+            <p><span class="dot"></span><span class="dot"></span><span class="dot"></span> Banyak penyewa telah
+                bergabung – sekarang giliranmu!</p>
         </div>
         <div class="login-right">
             <h2>Sign in</h2>
@@ -29,4 +32,5 @@
         </div>
     </div>
 </body>
+
 </html>
