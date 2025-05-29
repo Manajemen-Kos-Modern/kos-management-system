@@ -230,3 +230,11 @@
     border-radius: 0 0.5rem 0.5rem 0;
     cursor: pointer;
 }
+/* Tambahkan di resources/css/detail-kamar.css */
+.single-room .room-detail-header {
+    background: #e3f6ff;
+}
+.double-room .room-detail-header {
+    background: #fff3e3;
+}
+/* Tambahkan style lain sesuai kebutuhan */

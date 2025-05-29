@@ -7,31 +7,13 @@
                 class="room-detail-section {{ strtolower($kamar->tipe_kamar) == 'single' ? 'single-room' : (strtolower($kamar->tipe_kamar) == 'double' ? 'double-room' : '') }}">
                 <div class="room-detail-header">
                     <div class="room-detail-images">
-                        @if(strtolower($kamar->tipe_kamar) == 'single')
-                            <img src="{{ asset('images/kost3.png') }}" alt="Kamar {{ $kamar->nomor_kamar }}"
-                                class="room-main-image">
-                            <div class="room-thumbnails">
-                                <img src="{{ asset('images/kost3.png') }}" class="room-thumb" alt="Thumb 1">
-                                <img src="{{ asset('images/kost3.png') }}" class="room-thumb" alt="Thumb 2">
-                                <img src="{{ asset('images/kost3.png') }}" class="room-thumb" alt="Thumb 3">
-                            </div>
-                        @elseif(strtolower($kamar->tipe_kamar) == 'double')
-                            <img src="{{ asset('images/kost6.png') }}" alt="Kamar {{ $kamar->nomor_kamar }}"
-                                class="room-main-image">
-                            <div class="room-thumbnails">
-                                <img src="{{ asset('images/kost6.png') }}" class="room-thumb" alt="Thumb 1">
-                                <img src="{{ asset('images/kost6.png') }}" class="room-thumb" alt="Thumb 2">
-                                <img src="{{ asset('images/kost6.png') }}" class="room-thumb" alt="Thumb 3">
-                            </div>
-                        @else
-                            <img src="{{ asset('images/kost1.png') }}" alt="Kamar {{ $kamar->nomor_kamar }}"
-                                class="room-main-image">
-                            <div class="room-thumbnails">
-                                <img src="{{ asset('images/kost1.png') }}" class="room-thumb" alt="Thumb 1">
-                                <img src="{{ asset('images/kost2.png') }}" class="room-thumb" alt="Thumb 2">
-                                <img src="{{ asset('images/image1.png') }}" class="room-thumb" alt="Thumb 3">
-                            </div>
-                        @endif
+                        <img src="{{ asset('images/kost1.png') }}" alt="Kamar {{ $kamar->nomor_kamar }}"
+                            class="room-main-image">
+                        <div class="room-thumbnails">
+                            <img src="{{ asset('images/kost1.png') }}" class="room-thumb" alt="Thumb 1">
+                            <img src="{{ asset('images/kost2.png') }}" class="room-thumb" alt="Thumb 2">
+                            <img src="{{ asset('images/image1.png') }}" class="room-thumb" alt="Thumb 3">
+                        </div>
                     </div>
                     <div class="room-detail-info">
                         <h2>{{ $kamar->nomor_kamar }} - {{ $kamar->tipe_kamar }}</h2>
@@ -109,31 +91,25 @@
                     <h3>Tipe Kamar Lainnya</h3>
                     <div class="recommend-cards">
                         @foreach(\App\Models\Kamar::where('id', '!=', $kamar->id)->where('tipe_kamar', $kamar->tipe_kamar)->limit(2)->get() as $lain)
-                            <div class="room-card">
-                                @if(strtolower($lain->tipe_kamar) == 'single')
-                                    <img src="{{ asset('images/kost3.png') }}" alt="Kost {{ $lain->nomor_kamar }}">
-                                @elseif(strtolower($lain->tipe_kamar) == 'double')
-                                    <img src="{{ asset('images/kost6.png') }}" alt="Kost {{ $lain->nomor_kamar }}">
-                                @else
-                                    <img src="{{ asset('images/kost2.png') }}" alt="Kost {{ $lain->nomor_kamar }}">
-                                @endif
-                                <div class="room-info">
-                                    <h4>{{ $lain->nomor_kamar }} - {{ $lain->tipe_kamar }}</h4>
-                                    <ul>
-                                        @if(strtolower($lain->tipe_kamar) == 'single')
-                                            <li><span>&#128716;</span> Single Bed</li>
-                                            <li><span>&#128705;</span> Kamar Mandi Dalam</li>
-                                        @elseif(strtolower($lain->tipe_kamar) == 'double')
-                                            <li><span>&#128716;</span> Double Bed</li>
-                                            <li><span>&#128705;</span> Kamar Mandi Dalam</li>
-                                        @endif
-                                    </ul>
-                                    <a href="{{ route('kamar.detail', $lain->id) }}" class="detail-btn">Lihat Detail</a>
+                                       <div class="         room-card">
+                                   <img src="{{ asset('images/kost2.png') }}" alt="Kost {{ $lain->nomor_kamar }}">
+                                      <div class="  room-info">
+                                              <h4>  {{ $lain->nomor_kamar }} - {{ $lain->tipe_kamar }}</h4>
+                                        <ul>
+                                             @if(strtolower($lain->tipe_kamar) == 'single')
+                                                <li><span>&#128716;</span> Single Bed</li>
+                                                <li><span>&#128705;</span> Kamar Mandi Dalam</li>
+                                            @elseif(strtolower($lain->tipe_kamar) == 'double')
+                                                        <li><span>&#128716;</span> Double Bed</li>
+                                                        <li><span>&#128705;</span> Kamar Mandi Dalam</li>
+                                                    @endif
+                                                    </ul>
+                                                    <a href="{{ route('kamar.detail', $lain->id) }}" class="detail-btn">Lihat Detail</a>
                                 </div>
                             </div>
                         @endforeach
-                    </div>
-                </div>
+    </div>
+</div>
                 <x-chatboot />
             </section>
             <x-footer />
