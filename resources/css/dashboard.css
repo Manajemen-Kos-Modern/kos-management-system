@@ -1,0 +1,222 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #f8f8f8;
+}
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 70px;
+    background: #ffe082;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* penting agar logout di bawah */
+    min-height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.sidebar nav {
+    width: 100%;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.sidebar nav ul li {
+    margin: 22px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar nav ul li a,
+.sidebar nav ul li button,
+.sidebar .logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    color: #fbc02d;
+    font-size: 26px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s;
+    text-decoration: none;
+    margin: 0 auto;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li button:hover,
+.sidebar .logout-btn:hover {
+    background: #fffde7;
+}
+
+.logout-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.logout-btn {
+    font-size: 28px;
+    color: #fbc02d;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #fffde7;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    margin: 30px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+}
+.header {
+    background: #ffe082;
+    padding: 18px 32px;
+    border-radius: 0 0 12px 12px;
+}
+.header-title .highlight {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fbc02d;
+}
+.header-search {
+    margin-top: 10px;
+    position: relative;
+}
+.header-search input {
+    width: 100%;
+    padding: 10px 40px 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #fbc02d;
+    font-size: 1rem;
+}
+.header-search .search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fbc02d;
+    font-size: 1.2rem;
+}
+.room-list-section {
+    padding: 32px;
+}
+.greeting {
+    font-size: 1.2rem;
+    margin-bottom: 18px;
+}
+.room-cards {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+.room-card {
+    background: #fff9c4;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    width: 260px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.room-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 16px 16px 0 0;
+}
+.room-info {
+    padding: 16px;
+    text-align: left;
+}
+.room-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: #fbc02d;
+}
+.room-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+.room-info ul li {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: #333;
+}
+.detail-btn {
+    background: #fff;
+    border: 1px solid #fbc02d;
+    color: #fbc02d;
+    border-radius: 8px;
+    padding: 6px 18px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.detail-btn:hover {
+    background: #fbc02d;
+    color: #fff;
+}
+.carousel-dots {
+    text-align: center;
+    margin-top: 10px;
+}
+.carousel-dots .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ffe082;
+    border-radius: 50%;
+    margin: 0 4px;
+    opacity: 0.6;
+}
+.carousel-dots .dot.active {
+    background: #fbc02d;
+    opacity: 1;
+}
+
+.footer {
+    text-align: center;
+    padding: 18px 0;
+    background: #ffe082;
+    color: #fbc02d;
+    font-weight: 500;
+    border-radius: 0 0 20px 20px;
+    margin-top: 24px;
+}

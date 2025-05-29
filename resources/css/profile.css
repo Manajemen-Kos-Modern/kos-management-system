@@ -1,0 +1,132 @@
+.profile-section {
+    background: #fff;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    max-width: 100vw;
+    box-shadow: none;
+}
+
+.profile-title {
+    color: #e6b800;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 32px 0 24px 0;
+    text-align: center;
+    letter-spacing: 1px;
+    background: #ffe699;
+    border: 2px solid #f5e1a4;
+    border-radius: 0;
+    padding: 8px 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0 24px 0;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #eee;
+    border: 4px solid #f5e1a4;
+}
+
+.profile-form {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 12px;
+}
+
+.profile-form-group {
+    margin-bottom: 16px;
+}
+
+.profile-form-group label {
+    display: block;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.profile-form-group input[type="text"],
+.profile-form-group input[type="email"] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #f5c97a;
+    border-radius: 7px;
+    font-size: 1em;
+    color: #222;
+    background: #fff;
+    transition: border 0.2s;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+}
+
+.profile-form-group input[readonly] {
+    background: #fff;
+    color: #888;
+}
+
+.profile-form-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.profile-btn-back {
+    background: #ffe066;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(230, 184, 0, 0.08);
+}
+
+.profile-btn-back:hover {
+    background: #e6b800;
+    color: #fff;
+}
+
+.profile-btn-edit {
+    background: #ffd600;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(230, 184, 0, 0.08);
+}
+
+.profile-btn-edit:hover {
+    background: #e6b800;
+    color: #fff;
+}
+
+@media (max-width: 800px) {
+    .profile-title,
+    .profile-form {
+        width: 98vw;
+    }
+    .profile-section {
+        padding: 0;
+        max-width: 100vw;
+    }
+}

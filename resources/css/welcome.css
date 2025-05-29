@@ -1,0 +1,112 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Container utama fullscreen */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    /* padding: 0 10px; */
+}
+
+/* Card */
+.main-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1400px;
+    height: 90%;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Image */
+.main-card-img-wrapper {
+    width: 50%;
+    height: 100%;
+}
+
+.main-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Text Content */
+.main-card-info {
+    width: 50%;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-card-info h2 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #222;
+}
+
+.main-card-info p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.main-card-btn {
+    background-color: #f97316;
+    color: white;
+    font-weight: bold;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+    width: fit-content;
+}
+
+.main-card-btn:hover {
+    background-color: #ea580c;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .main-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-card-img-wrapper,
+    .main-card-info {
+        width: 100%;
+    }
+
+    .main-card-img {
+        height: 240px;
+    }
+
+    .main-card-info {
+        padding: 32px 24px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .main-card-btn {
+        margin: 0 auto;
+    }
+}

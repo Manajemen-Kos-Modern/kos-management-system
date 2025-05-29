@@ -1,0 +1,232 @@
+.room-detail-section {
+    padding: 32px;
+}
+.room-detail-header {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+.room-detail-images {
+    flex: 2;
+}
+.room-main-image {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    max-height: 260px;
+}
+.room-thumbnails {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+.room-thumb {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ffe082;
+    cursor: pointer;
+    transition: border 0.2s;
+}
+.room-thumb:hover {
+    border: 2px solid #fbc02d;
+}
+.room-detail-info {
+    flex: 1;
+    background: #fff9c4;
+    padding: 24px 18px;
+    border-radius: 16px;
+    min-width: 260px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.room-detail-info h2 {
+    color: #fbc02d;
+    margin-bottom: 12px;
+}
+.room-price {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+.room-price span {
+    font-size: 1rem;
+    color: #888;
+    font-weight: normal;
+}
+.booking-form label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+    font-weight: 500;
+}
+.booking-form input[type="date"],
+.booking-form select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    border: 1px solid #fbc02d;
+    font-size: 1rem;
+}
+.detail-btn {
+    background: #fff;
+    border: 1px solid #fbc02d;
+    color: #fbc02d;
+    border-radius: 8px;
+    padding: 8px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-bottom: 14px;
+    width: 100%;
+    font-weight: 500;
+}
+.detail-btn:hover {
+    background: #fbc02d;
+    color: #fff;
+}
+.total-section {
+    border-top: 1px solid #fbc02d;
+    padding-top: 10px;
+    color: #888;
+    font-size: 1rem;
+}
+.total-section .total-amount {
+    font-size: 1.1rem;
+    color: #fbc02d;
+    font-weight: bold;
+}
+.room-detail-body {
+    padding: 24px 0 0 0;
+}
+.room-detail-body h3 {
+    color: #fbc02d;
+    margin-bottom: 10px;
+    margin-top: 24px;
+    font-size: 1.1rem;
+}
+.spec-list,
+.facility-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    color: #333;
+    font-size: 0.98rem;
+}
+.room-detail-body p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+.room-detail-recommend {
+    margin-top: 32px;
+}
+.room-detail-recommend h3 {
+    color: #fbc02d;
+    margin-bottom: 8px;
+}
+.recommend-cards {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+}
+.room-card {
+    background: #fff9c4;
+    border-radius: 16px;
+    width: 220px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.room-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+.room-info {
+    padding: 12px;
+    text-align: left;
+    width: 100%;
+}
+.room-info h4 {
+    margin: 0 0 8px 0;
+    color: #fbc02d;
+    font-size: 1rem;
+}
+.room-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+.room-info ul li {
+    margin-bottom: 2px;
+}
+.chatbot-toggle {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: #f59e0b;
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+.chatbot-container {
+    position: fixed;
+    bottom: 5rem;
+    right: 1rem;
+    width: 20rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+.chatbot-header {
+    background-color: #f59e0b;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.chatbot-messages {
+    padding: 1rem;
+    height: 10rem;
+    overflow-y: auto;
+}
+.chatbot-input-container {
+    padding: 0.75rem;
+    border-top: 1px solid #d1d5db;
+    display: flex;
+}
+.chatbot-input-container input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem 0 0 0.5rem;
+    outline: none;
+}
+.chatbot-input-container button {
+    background-color: #f59e0b;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+    cursor: pointer;
+}
