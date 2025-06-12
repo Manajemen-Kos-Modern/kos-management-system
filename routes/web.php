@@ -51,7 +51,7 @@ Route::get('/notifikasi', [NotifikasiController::class, 'index'])->name('notifik
 // Keluhan routes
 Route::get('/keluhan', [KeluhanController::class, 'index'])->name('keluhan.index');
 Route::get('/keluhan/form', [KeluhanController::class, 'form'])->name('keluhan.form');
-Route::get('/keluhan/{id}', [KeluhanController::class, 'detail'])->name('keluhan.detail');
+Route::get('/keluhan/{id}/detail', [KeluhanController::class, 'detail'])->name('keluhan.detail');
 
 // Route untuk menampilkan form keluhan
 Route::get('/keluhan/form', [KeluhanController::class, 'form'])->name('keluhan.form');

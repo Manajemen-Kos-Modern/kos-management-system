@@ -43,12 +43,19 @@ class PemesananController extends Controller
             // 2. Simpan bukti transfer
             $bukti_transfer = $request->file('bukti_transfer')->store('bukti_transfer', 'public');
 
-            // 3. Simpan pembayaran
+            // 3. Hitung harga sesuai tipe pembayaran
+            $harga = $data['harga'];
+            if ($request->waktu_pembayaran === 'Lunas') {
+                $harga = $data['harga'] * $request->durasi_sewa;
+            }
+
+            // 4. Simpan pembayaran
             Pembayaran::create([
                 'kontrak_id' => $kontrak->id,
                 'user_id' => auth()->id(),
-                'harga' => $data['harga'],
+                'harga' => $harga,
                 'metode_pembayaran' => 'transfer',
+                'waktu_pembayaran' => $request->waktu_pembayaran,
                 'bukti_transfer' => $bukti_transfer,
                 'status' => 'menunggu',
             ]);
@@ -67,7 +74,6 @@ class PemesananController extends Controller
         return view('pemesanan-kamar', compact('kamar'));
     }
 
-
     public function kontrakSaya()
     {
         $kontraks = Kontrak::where('user_id', auth()->id())
@@ -76,5 +82,4 @@ class PemesananController extends Controller
             ->get();
         return view('kontrak-saya', compact('kontraks'));
     }
-
 }

@@ -44,4 +44,11 @@ class KeluhanController extends Controller
         ]);
         return redirect()->route('keluhan.index')->with('success', 'Keluhan berhasil dikirim.');
     }
+
+
+    public function detail($id)
+    {
+        $keluhan = \App\Models\Keluhan::with(['user', 'kamar'])->findOrFail($id);
+        return view('detail-keluhan', compact('keluhan'));
+    }
 }

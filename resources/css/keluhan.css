@@ -110,6 +110,28 @@
     display: inline-block;
 }
 
+.keluhan-btn-progres {
+    background: #ffc507;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 0.95em;
+    font-weight: bold;
+    margin-left: 2px;
+    display: inline-block;
+}
+
+.keluhan-btn-pending {
+    background: #c42525;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 0.95em;
+    font-weight: bold;
+    margin-left: 2px;
+    display: inline-block;
+}
+
 @media (max-width: 800px) {
     .keluhan-title,
     .keluhan-action,

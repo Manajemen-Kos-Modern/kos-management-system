@@ -24,15 +24,19 @@
                             @forelse($keluhan as $k => $item)
                                 <tr>
                                     <td>{{ $k + 1 }}</td>
-                                    <td>{{ $item->user->name ?? '-' }}</td>
+                                    <td>{{ $item->user->nama ?? '-' }}</td>
                                     <td>{{ $item->kamar->nomor_kamar ?? '-' }}</td>
                                     <td>{{ $item->keterangan }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('m/d/Y') }}</td>
                                     <td>
                                         <a href="{{ route('keluhan.detail', $item->id) }}"
                                             class="keluhan-btn-detail">Detail</a>
-                                        @if($item->status == 'done')
+                                        @if($item->status == 'selesai')
                                             <span class="keluhan-btn-done">Done</span>
+                                        @elseif($item->status == 'diproses')
+                                            <span class="keluhan-btn-progres">Progres</span>
+                                        @elseif($item->status == 'pending')
+                                            <span class="keluhan-btn-pending">Pending</span>
                                         @endif
                                     </td>
                                 </tr>
