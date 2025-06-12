@@ -1,45 +1,80 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kontrak;
+use App\Models\Pembayaran;
 use App\Models\Kamar;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
 {
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nama' => 'required|string',
-            'email' => 'required|email',
-            'no_hp' => 'required|string',
-            'alamat' => 'required|string',
-            'jenis_kelamin' => 'required|string',
+            'kamar_id' => 'required|exists:kamars,id',
+            'harga' => 'required|numeric',
             'tanggal_mulai' => 'required|date',
             'durasi_sewa' => 'required|integer',
             'waktu_pembayaran' => 'required|string',
-            'tipe_kamar' => 'required|string',
-            'nomor_kamar' => 'required|string',
             'bukti_transfer' => 'required|image|max:2048',
         ]);
-        $bukti = $request->file('bukti_transfer')->store('bukti_transfer', 'public');
-        Kontrak::create([
-            'user_id' => auth()->id(),
-            'kamar_id' => request()->route('id'), // atau ambil dari hidden input jika perlu
-            'tanggal_mulai' => $data['tanggal_mulai'],
-            'durasi_sewa' => $data['durasi_sewa'],
-            'status' => 'pending',
-            'bukti_transfer' => $bukti,
-            // tambahkan field lain sesuai kebutuhan
-        ]);
-        return redirect()->back()->with('success', 'Booking berhasil!');
-    }
 
+        DB::beginTransaction();
+        try {
+            // 1. Simpan kontrak
+            $kontrak = Kontrak::create([
+                'user_id' => auth()->id(),
+                'kamar_id' => $request->kamar_id,
+                'tanggal_mulai' => $request->tanggal_mulai,
+                'durasi_sewa' => $request->durasi_sewa,
+                'status' => 'aktif',
+            ]);
+
+            // Update status dan user_id di tabel kamar
+            $kamar = Kamar::find($request->kamar_id);
+            if ($kamar) {
+                $kamar->status = 'terisi';
+                $kamar->user_id = auth()->id();
+                $kamar->save();
+            }
+
+            // 2. Simpan bukti transfer
+            $bukti_transfer = $request->file('bukti_transfer')->store('bukti_transfer', 'public');
+
+            // 3. Simpan pembayaran
+            Pembayaran::create([
+                'kontrak_id' => $kontrak->id,
+                'user_id' => auth()->id(),
+                'harga' => $data['harga'],
+                'metode_pembayaran' => 'transfer',
+                'bukti_transfer' => $bukti_transfer,
+                'status' => 'menunggu',
+            ]);
+
+            DB::commit();
+            return redirect()->route('riwayat.pembayaran')->with('success', 'Pemesanan berhasil!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return back()->withErrors(['msg' => 'Gagal menyimpan data: ' . $e->getMessage()]);
+        }
+    }
 
     public function form($id)
     {
         $kamar = Kamar::findOrFail($id);
         return view('pemesanan-kamar', compact('kamar'));
     }
+
+
+    public function kontrakSaya()
+    {
+        $kontraks = Kontrak::where('user_id', auth()->id())
+            ->with(['kamar', 'pembayaran'])
+            ->latest()
+            ->get();
+        return view('kontrak-saya', compact('kontraks'));
+    }
+
 }

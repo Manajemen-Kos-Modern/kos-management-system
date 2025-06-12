@@ -32,30 +32,66 @@
                                 <img src="{{ asset('images/image1.png') }}" class="room-thumb" alt="Thumb 3">
                             </div>
                         @endif
+
                     </div>
                     <div class="room-detail-info">
                         <h2>{{ $kamar->nomor_kamar }} - {{ $kamar->tipe_kamar }}</h2>
                         <div class="room-price">Rp {{ number_format($kamar->harga, 0, ',', '.') }} <span>/ Per
                                 Bulan</span></div>
-                        <form class="booking-form">
+                        <form class="booking-form" method="GET" action="{{ route('pemesanan.form', $kamar->id) }}">
                             <label for="tanggal">Tanggal Masuk</label>
-                            <input type="date" id="tanggal" name="tanggal">
+                            <input type="date" id="tanggal" name="tanggal" required>
                             <label for="durasi">Durasi</label>
-                            <select id="durasi" name="durasi">
-                                <option>1 Bulan</option>
-                                <option>3 Bulan</option>
-                                <option>6 Bulan</option>
-                                <option>12 Bulan</option>
+                            <select id="durasi" name="durasi" required>
+                                <option value="1">1 Bulan</option>
+                                <option value="3">3 Bulan</option>
+                                <option value="6">6 Bulan</option>
+                                <option value="12">12 Bulan</option>
+                            </select>
+
+                            <label for="tipe_pembayaran">Tipe Pembayaran</label>
+                            <select id="tipe_pembayaran" name="tipe_pembayaran" required>
+                                <option value="perbulan">Perbulan</option>
+                                <option value="lunas">Lunas</option>
                             </select>
                             <input type="hidden" name="kamar_id" value="{{ $kamar->id }}">
-                            <a href="{{ route('pemesanan.form', $kamar->id) }}" class="detail-btn">Booking Now</a>
+                            <button type="submit" class="detail-btn">Booking Now</button>
                         </form>
-                        <div class="total-section">
+                        <div class="total-section" style="margin-top:15px;">
                             <div>Total Pembayaran Pertama</div>
-                            <div class="total-amount">Rp {{ number_format($kamar->harga, 0, ',', '.') }}</div>
+                            <div class="total-amount" id="total-amount">
+                                Rp {{ number_format($kamar->harga, 0, ',', '.') }}
+                            </div>
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    const hargaPerBulan = {{ $kamar->harga }};
+                                    const durasiSelect = document.getElementById('durasi');
+                                    const tipePembayaranSelect = document.getElementById('tipe_pembayaran');
+                                    const totalAmount = document.getElementById('total-amount');
+
+                                    function updateTotal() {
+                                        const durasi = parseInt(durasiSelect.value);
+                                        const tipe = tipePembayaranSelect.value;
+                                        let total = 0;
+
+                                        if (tipe === 'lunas') {
+                                            total = hargaPerBulan * durasi;
+                                        } else {
+                                            total = hargaPerBulan; // hanya bayar 1x bulan pertama
+                                        }
+
+                                        totalAmount.textContent = 'Rp ' + total.toLocaleString('id-ID');
+                                    }
+
+                                    durasiSelect.addEventListener('change', updateTotal);
+                                    tipePembayaranSelect.addEventListener('change', updateTotal);
+                                    updateTotal();
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
+
                 <div class="room-detail-body">
                     <h3>Spesifikasi {{ $kamar->tipe_kamar }}</h3>
                     <ul class="spec-list">
@@ -105,6 +141,7 @@
                             keamanan 24 jam.</p>
                     @endif
                 </div>
+
                 <div class="room-detail-recommend">
                     <h3>Tipe Kamar Lainnya</h3>
                     <div class="recommend-cards">

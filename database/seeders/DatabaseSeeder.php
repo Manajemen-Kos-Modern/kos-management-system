@@ -15,12 +15,12 @@ class DatabaseSeeder extends Seeder
 {
     $this->call([
     //     UsersTableSeeder::class,
-    KamarTableSeeder::class,
+    // KamarTableSeeder::class,
     //     KeluhanTableSeeder::class,
     //     PemeliharaanTableSeeder::class,
     // NotifikasiTableSeeder::class
     //     KontrakTableSeeder::class,
-    //     PembayaranTableSeeder::class,
+    // PembayaranTableSeeder::class,
     // 
     ]);
 }

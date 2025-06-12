@@ -5,7 +5,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    public function up() {
+    public function up()
+    {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kontrak_id')->constrained('kontraks')->onDelete('cascade');
@@ -17,7 +18,8 @@ return new class extends Migration {
         });
     }
 
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('pembayarans');
     }
 };

@@ -50,20 +50,28 @@ class User extends Authenticatable
         ];
     }
 
-// Relasi
-    public function kontrak() {
+    // Relasi
+    public function kontrak()
+    {
         return $this->hasMany(Kontrak::class);
     }
 
-    public function keluhan() {
+    public function keluhan()
+    {
         return $this->hasMany(Keluhan::class);
     }
 
-    public function notifikasi() {
+    public function notifikasi()
+    {
         return $this->hasMany(Notifikasi::class);
     }
 
-    public function pembayaran() {
+    public function pembayaran()
+    {
         return $this->hasMany(Pembayaran::class);
+    }
+    public function kamar()
+    {
+        return $this->belongsTo(Kamar::class, 'kamar_id');
     }
 }

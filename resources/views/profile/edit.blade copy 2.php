@@ -4,15 +4,18 @@
         <main class="main-content">
             <section class="profile-section">
                 <h2 class="profile-title">Edit Profile</h2>
-                <form class="profile-form" method="POST" action="{{ route('profile.update') }}"
-                    enctype="multipart/form-data">
+                <form class="profile-form" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="profile-avatar-wrapper" style="text-align:center;">
-                        <img id="preview-foto" src="{{ $user->foto_profile
-    ? asset('storage/' . $user->foto_profile)
-    : asset('images/default-avatar.png') }}" alt="Profile Photo" class="profile-avatar"
-                            style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:3px solid #ffe082;">
+                        <img id="preview-foto" src="{{ $user->foto_profile 
+                            ? asset('storage/' . $user->foto_profile) 
+                            : asset('images/default-avatar.png') }}" 
+                            alt="Profile Photo" class="profile-avatar" style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:3px solid #ffe082;">
+                        <input type="file" name="foto_profile" id="foto_profile" accept="image/*" style="margin-top:10px;">
+                        @error('foto_profile')
+                            <div class="error" style="color:red;">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="profile-form-group">
                         <label for="nama">Full Name</label>
@@ -38,18 +41,9 @@
                         </select>
                         @error('gender') <div class="error" style="color:red;">{{ $message }}</div> @enderror
                     </div>
-                    <div class="profile-form-group" style="text-align:center;">
-                        <input type="file" name="foto_profile" id="foto_profile" accept="image/*"
-                            style="margin-top:10px;">
-                        @error('foto_profile')
-                            <div class="error" style="color:red;">{{ $message }}</div>
-                        @enderror
-                    </div>
                     <div class="profile-form-actions" style="margin-top:20px;">
-                        <a href="{{ route('profile.show') }}" class="profile-btn-back"
-                            style="background:#ffe082;color:#333;padding:8px 20px;border-radius:6px;text-decoration:none;">Back</a>
-                        <button type="submit" class="profile-btn-edit"
-                            style="background:#ffd600;color:#222;padding:8px 20px;border-radius:6px;border:none;">Save</button>
+                        <a href="{{ route('profile.show') }}" class="profile-btn-back" style="background:#ffe082;color:#333;padding:8px 20px;border-radius:6px;text-decoration:none;">Back</a>
+                        <button type="submit" class="profile-btn-edit" style="background:#ffd600;color:#222;padding:8px 20px;border-radius:6px;border:none;">Save</button>
                     </div>
                     @if (session('status') === 'profile-updated')
                         <div style="color:green;margin-top:10px;">Profile updated successfully.</div>
@@ -66,7 +60,7 @@
     ])
     <script>
         // Preview foto sebelum upload
-        document.getElementById('foto_profile').addEventListener('change', function (e) {
+        document.getElementById('foto_profile').addEventListener('change', function(e) {
             const [file] = e.target.files;
             if (file) {
                 document.getElementById('preview-foto').src = URL.createObjectURL(file);

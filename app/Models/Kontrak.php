@@ -13,18 +13,23 @@ class Kontrak extends Model
         'user_id',
         'kamar_id',
         'tanggal_mulai',
+        'durasi_sewa', // <- ini harus ada
         'tanggal_selesai',
-        'status'
+        'status',
     ];
-    public function user() {
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function kamar() {
+    public function kamar()
+    {
         return $this->belongsTo(Kamar::class);
     }
 
-    public function pembayaran() {
-        return $this->hasMany(Pembayaran::class);
+    public function pembayaran()
+    {
+        return $this->hasOne(\App\Models\Pembayaran::class, 'kontrak_id');
     }
 }

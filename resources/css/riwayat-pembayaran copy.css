@@ -1,0 +1,68 @@
+.riwayat-section {
+    margin-top: 20px;
+}
+
+.riwayat-header {
+    background: #fff9db;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.riwayat-table-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 10px 0;
+}
+
+.riwayat-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.riwayat-table th {
+    background: #fff9db;
+    color: #e59866;
+    font-weight: bold;
+    padding: 10px 8px;
+    border-bottom: 2px solid #e59866;
+    text-align: left;
+}
+
+.riwayat-table td {
+    padding: 10px 8px;
+    border-bottom: 2px solid #222;
+}
+
+.riwayat-table tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 800px) {
+    .riwayat-table,
+    .riwayat-table thead,
+    .riwayat-table tbody,
+    .riwayat-table th,
+    .riwayat-table td,
+    .riwayat-table tr {
+        display: block;
+    }
+    .riwayat-table th {
+        display: none;
+    }
+    .riwayat-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        margin-bottom: 10px;
+    }
+    .riwayat-table td:before {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+}

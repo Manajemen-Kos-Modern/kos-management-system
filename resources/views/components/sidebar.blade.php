@@ -15,6 +15,15 @@
                 <a href="{{ route('pemesanan.index') }}" title="Pemesanan">
                     <span>&#128179;</span>
                 </a>
+            <li>
+                <a href="{{ route('riwayat.pembayaran') }}" title="Riwayat Pembayaran">
+                    <span>&#128184;</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('kontrak.saya') }}" title="Kontrak Saya">
+                    <span>&#128221;</span>
+                </a>
             </li>
             <li>
                 <a href="{{ route('keluhan.index') }}" title="Keluhan">

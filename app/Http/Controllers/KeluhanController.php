@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Keluhan;
+use App\Models\Kamar;
 
 class KeluhanController extends Controller
 {
     public function index()
     {
-        $keluhan = \App\Models\Keluhan::with(['user', 'kamar'])
+        $keluhan = Keluhan::with(['user', 'kamar'])
             ->where('user_id', auth()->id())
             ->orderBy('created_at', 'desc')
             ->get();
@@ -19,7 +21,7 @@ class KeluhanController extends Controller
     {
         $user = auth()->user();
         // Ambil kamar user, sesuaikan relasi jika perlu
-        $kamar = \App\Models\Kamar::where('user_id', $user->id)->first();
+        $kamar = Kamar::where('user_id', $user->id)->first();
 
         return view('form-keluhan', compact('user', 'kamar'));
     }
@@ -33,7 +35,7 @@ class KeluhanController extends Controller
         //     // tambahkan validasi lain jika perlu
         // ]);
 
-        \App\Models\Keluhan::create([
+        Keluhan::create([
             'user_id' => auth()->id(),
             'kamar_id' => $request->kamar_id, // pastikan field ini dikirim jika diperlukan
             'keterangan' => $request->keterangan,

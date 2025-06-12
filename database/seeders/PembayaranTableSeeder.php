@@ -12,11 +12,20 @@ class PembayaranTableSeeder extends Seeder
     {
         Pembayaran::create([
             'kontrak_id' => 1,
-            'user_id' => 2,
+            'user_id' => 5,
             'harga' => 1500000,
             'metode_pembayaran' => 'transfer',
             'status' => 'dibayar',
         ]);
+
+         Pembayaran::create([
+            'kontrak_id' => 1,
+            'user_id' => 5,
+            'harga' => 1000000,
+            'metode_pembayaran' => 'transfer',
+            'status' => 'dibayar',
+        ]);
+
     }
 }
 

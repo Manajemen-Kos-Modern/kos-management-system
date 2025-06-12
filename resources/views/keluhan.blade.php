@@ -23,13 +23,14 @@
                         <tbody>
                             @forelse($keluhan as $k => $item)
                                 <tr>
-                                    <td>{{ $k+1 }}</td>
+                                    <td>{{ $k + 1 }}</td>
                                     <td>{{ $item->user->name ?? '-' }}</td>
                                     <td>{{ $item->kamar->nomor_kamar ?? '-' }}</td>
                                     <td>{{ $item->keterangan }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('m/d/Y') }}</td>
                                     <td>
-                                        <a href="{{ route('keluhan.detail', $item->id) }}" class="keluhan-btn-detail">Detail</a>
+                                        <a href="{{ route('keluhan.detail', $item->id) }}"
+                                            class="keluhan-btn-detail">Detail</a>
                                         @if($item->status == 'done')
                                             <span class="keluhan-btn-done">Done</span>
                                         @endif
@@ -43,16 +44,17 @@
                         </tbody>
                     </table>
                 </div>
-            <x-chatboot/>
+                <x-chatboot />
             </section>
         </main>
     </div>
-    @vite(['resources/css/keluhan.css',
-                        'resources/js/keluhan.js',
-                        'resources/css/dashboard.css',
-                        'resources/js/dashboard.js',
-                        'resources/css/chatboot.css',
-                        'resources/js/chatboot.js'
-                        
-                        ])
+    @vite([
+        'resources/css/keluhan.css',
+        'resources/js/keluhan.js',
+        'resources/css/dashboard.css',
+        'resources/js/dashboard.js',
+        'resources/css/chatboot.css',
+        'resources/js/chatboot.js'
+
+    ])
 </x-app-layout>
