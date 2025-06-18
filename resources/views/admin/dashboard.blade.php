@@ -1,60 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    
-    <!-- Tambahkan Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+@section('header', 'Dashboard')
 
-    <!-- Tambahkan Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
+@section('content')
+<div class="p-6">
+    <h1 class="text-3xl font-bold text-center text-orange-500 mb-6">SELAMAT DATANG ADMIN!</h1>
 
-<body class="bg-gray-100 text-gray-800">
-
-    <div class="max-w-7xl mx-auto p-6 space-y-6">
-
-        <h1 class="text-3xl font-bold mb-4">Welcome to Admin Dashboard</h1>
-
-        <!-- Ringkasan -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <x-dashboard-card title="Total Kamar" :value="$totalKamar" />
-            <x-dashboard-card title="Kamar Terisi" :value="$kamarTerisi" />
-            <x-dashboard-card title="Kamar Kosong" :value="$kamarKosong" />
-            <x-dashboard-card title="Total Pendapatan" :value="'Rp ' . number_format($totalPendapatan, 0, ',', '.')" />
+    <!-- Kotak Statistik -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-yellow-100 text-center p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold text-orange-500 mb-2">Total Kamar</h2>
+            <p class="text-4xl font-bold text-orange-600">{{ $totalKamar }}</p>
         </div>
-
-        <!-- Grafik -->
-        <div class="bg-white p-4 rounded-lg shadow-md">
-            <canvas id="grafikPendapatan" height="100"></canvas>
+        <div class="bg-yellow-100 text-center p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold text-orange-500 mb-2">Kamar Terisi</h2>
+            <p class="text-4xl font-bold text-orange-600">{{ $kamarTerisi }}</p>
         </div>
-
+        <div class="bg-yellow-100 text-center p-4 rounded-lg shadow">
+            <h2 class="text-xl font-semibold text-orange-500 mb-2">Kamar Kosong</h2>
+            <p class="text-4xl font-bold text-orange-600">{{ $kamarKosong }}</p>
+        </div>
     </div>
 
-    <script>
-        const ctx = document.getElementById('grafikPendapatan').getContext('2d');
-        const data = {
-            labels: [...Array(12)].map((_, i) => `Bulan ${i + 1}`),
-            datasets: [{
-                label: 'Pendapatan',
-                data: @json(array_values($pendapatanTahunan->toArray())),
-                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }]
-        };
-        new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: { y: { beginAtZero: true } }
-            }
-        });
-    </script>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Notifikasi -->
+<div class="bg-yellow-100 rounded-lg shadow">
+    <div class="bg-yellow-200 text-orange-500 font-semibold px-4 py-2 rounded-t-lg">
+        Notifikasi
+    </div>
+    <div class="p-4">
+        @forelse ($notifikasi as $notif)
+            <div class="flex items-start gap-3 mb-4 border-b pb-2 border-orange-200">
+                <img src="{{ $notif->user->profile_photo_url ?? '/default-user.png' }}" alt="User" class="w-8 h-8 rounded-full mt-1">
+                <div>
+                    <p class="font-semibold text-orange-600">{{ $notif->user->name ?? 'User #' . $notif->user_id }}</p>
+                    <p class="text-gray-800">{{ $notif->pesan }}</p>
+                    <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($notif->waktu_kirim)->format('d M Y, H:i') }}</p>
+                </div>
+            </div>
+        @empty
+            <p class="text-gray-500">Tidak ada notifikasi terbaru.</p>
+        @endforelse
+    </div>
+</div>
 
-</body>
 
-</html>
+        <!-- Jadwal Pemeliharaan -->
+<div class="bg-yellow-100 rounded-lg shadow">
+    <div class="bg-yellow-200 text-orange-500 font-semibold px-4 py-2 rounded-t-lg">
+        Jadwal Pemeliharaan
+    </div>
+    <div class="p-4">
+        @forelse ($jadwalPemeliharaan as $jadwal)
+            <div class="mb-4 border-b border-orange-200 pb-2">
+                <p class="text-orange-600 font-semibold">
+                    Kamar {{ $jadwal->kamar->no_kamar ?? 'Tanpa Nama' }}
+                </p>
+                <p class="text-sm text-gray-700">{{ $jadwal->keterangan }}</p>
+                <p class="text-sm text-gray-500">Dibuat: {{ $jadwal->created_at->format('d M Y, H:i') }}</p>
+            </div>
+        @empty
+            <p class="text-gray-500">Tidak ada jadwal pemeliharaan.</p>
+        @endforelse
+    </div>
+</div>
+
+    </div>
+</div>
+@endsection

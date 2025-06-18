@@ -20,13 +20,20 @@ class Kamar extends Model
     {
         return $this->belongsTo(User::class);
     }
+
     public function Keluhans()
     {
         return $this->hasMany(Keluhan::class);
     }
+
     // Menambahkan relasi ke Pemeliharaan
     public function pemeliharaans()
     {
         return $this->hasMany(Pemeliharaan::class);
+    }
+
+      public function kontrak()
+    {
+        return $this->hasMany(Kontrak::class);
     }
 }

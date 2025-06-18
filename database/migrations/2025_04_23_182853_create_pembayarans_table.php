@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('kontrak_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->decimal('harga');
-            $table->enum('metode_pembayaran', ['e_money', 'bank']);
+            $table->decimal('harga', 15, 2);
+            $table->enum('metode_pembayaran', ['cash', 'bank']);
             $table->enum('status', ['gagal', 'pending', 'sukses']);
             $table->timestamps();
         });

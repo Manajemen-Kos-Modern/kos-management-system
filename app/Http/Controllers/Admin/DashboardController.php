@@ -2,55 +2,35 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+
+use App\Models\Kamar;
+use App\Models\Notifikasi;
+use App\Models\Pembayaran;
+use App\Models\Pemeliharaan;
+use Illuminate\Support\Carbon;
 
 class DashboardController extends Controller
 {
     public function admin()
     {
-        return view('admin.dashboard');
-    }
+        $totalKamar = Kamar::count();
+        $kamarTerisi = Kamar::where('status', 'terisi')->count();
+        $kamarKosong = Kamar::where('status', 'belum_terisi')->count();
+        $totalPendapatan = Pembayaran::where('status', 'sukses')->sum('harga');
 
-    public function pemilik()
-    {
-        return view('pemilik.dashboard');
-    }
+        // Ambil 5 notifikasi terbaru
+        $notifikasi = Notifikasi::with('user')->orderBy('waktu_kirim', 'desc')->take(5)->get();
 
-    public function pengguna()
-    {
-        return view('pengguna.dashboard');
-    }
-    public function index()
-    {
-        // Contoh data kamar (bisa diganti dengan data dari database)
-        $kamar = [
-            (object) [
-                'gambar' => 'https://via.placeholder.com/150',
-                'nama_kamar' => 'ManKost Type A',
-                'fasilitas' => 'Single Bed, Furniture',
-                'kamar_mandi' => 'Kamar Mandi Dalam',
-                'ac' => 'AC',
-                'tv' => 'TV',
-            ],
-            (object) [
-                'gambar' => 'https://via.placeholder.com/150',
-                'nama_kamar' => 'ManKost Type B',
-                'fasilitas' => 'Single Bed, Furniture',
-                'kamar_mandi' => 'Kamar Mandi Dalam',
-                'ac' => 'AC',
-                'tv' => 'TV',
-            ],
-            (object) [
-                'gambar' => 'https://via.placeholder.com/150',
-                'nama_kamar' => 'ManKost Type C',
-                'fasilitas' => 'Single Bed, Furniture',
-                'kamar_mandi' => 'Kamar Mandi Dalam',
-                'ac' => 'AC',
-                'tv' => 'TV',
-            ],
-        ];
+        // Ambil 5 pemeliharaan terbaru
+        $jadwalPemeliharaan = Pemeliharaan::with('kamar')->latest()->take(5)->get();
 
-        // Kirim data ke view
-        return view('pengguna.dashboard', compact('kamar'));
+        return view('admin.dashboard', compact(
+            'totalKamar',
+            'kamarTerisi',
+            'kamarKosong',
+            'totalPendapatan',
+            'notifikasi',
+            'jadwalPemeliharaan'
+        ));
     }
 }

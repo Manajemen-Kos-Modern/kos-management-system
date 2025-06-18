@@ -15,9 +15,9 @@ class CreateKamarsTable extends Migration
             $table->id();
             $table->string('nomor_kamar');
             $table->string('tipe_kamar');
-            $table->decimal('harga', 8, 2);
+            $table->decimal('harga', 15, 2);
             $table->enum('status', ['terisi', 'belum_terisi']);
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

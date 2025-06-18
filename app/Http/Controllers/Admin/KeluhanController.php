@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Keluhan;
+use App\Models\User;
+use App\Models\Kamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,9 +21,14 @@ class KeluhanController extends Controller
     }
 
     // User mengisi keluhan
-    public function create()
+   public function create()
     {
-        return view('admin.keluhan.create');
+        // Ambil data user dan kamar
+        $users = User::all();
+        $kamars = Kamar::all();
+
+        // Kirim ke view
+        return view('admin.keluhan.create', compact('users', 'kamars'));
     }
 
     public function edit($id)

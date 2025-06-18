@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function kontrak()
+{
+    return $this->hasOne(Kontrak::class)->where('status', 'aktif');
+}
 }

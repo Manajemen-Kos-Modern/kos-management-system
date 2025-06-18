@@ -15,6 +15,7 @@ class Pembayaran extends Model
         'created_at',
         'updated_at'
     ];
+    
     public function Kontrak()
     {
         return $this->belongsTo(Kontrak::class);
