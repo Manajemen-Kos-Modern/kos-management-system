@@ -1,0 +1,97 @@
+.kontrak-table-container {
+    overflow-x: auto;
+}
+.kontrak-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+.kontrak-table th {
+    background: #ffe082;
+    padding: 12px 8px;
+}
+.kontrak-table td {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 8px;
+}
+.kontrak-flex {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.kontrak-pembayaran {
+    flex: 1;
+    min-width: 320px;
+    border: 1.5px solid #ffe082;
+    border-radius: 12px;
+    padding: 24px 20px;
+    background: #fff;
+}
+.kontrak-pembayaran b {
+    font-size: 1.1em;
+}
+.kontrak-harga {
+    font-size: 2em;
+    color: #e6b800;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.kontrak-btn {
+    margin-bottom: 18px;
+    padding: 6px 18px;
+    border-radius: 6px;
+    border: 1px solid #ffe082;
+    background: #fffbe6;
+    cursor: pointer;
+}
+.kontrak-bank-info {
+    background: #f4f4f4;
+    padding: 14px 10px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+.kontrak-bank-info img {
+    height: 38px;
+    vertical-align: middle;
+}
+.kontrak-form-container {
+    flex: 1;
+    min-width: 320px;
+}
+.kontrak-form {
+    background: #fff;
+    padding: 24px 20px;
+    border-radius: 12px;
+}
+.kontrak-form label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+.kontrak-form-file {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.kontrak-form-file-label {
+    background: #ffe082;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.kontrak-form-file input[type="file"] {
+    display: none;
+}
+.kontrak-form-file-name {
+    color: #888;
+}
+.kontrak-form-btn {
+    background: #ffe082;
+    padding: 10px 38px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}

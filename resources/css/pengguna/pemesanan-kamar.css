@@ -1,0 +1,167 @@
+.success-alert {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #c3e6cb;
+}
+.error-alert {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+}
+.room-order-section .section-title {
+    text-align: center;
+    color: #e6b800;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 24px;
+}
+.order-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px #0001;
+    padding: 32px 24px;
+    max-width: 900px; /* Perbesar max-width agar dua kolom muat */
+    margin: 32px auto;
+}
+.order-form > div {
+    flex: 1;
+    min-width: 260px; /* Perkecil min-width agar dua kolom muat */
+}
+.order-form label {
+    font-weight: 500;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    display: block;
+}
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="date"],
+.order-form select,
+.order-form input[type="file"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid #ffe082;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background: #fcfcfc;
+    font-size: 1em;
+}
+.order-form input[readonly],
+.order-form select[readonly] {
+    background: #fcfcfc;
+    color: #888;
+}
+.payment-info {
+    margin-top: 20px;
+    background: #fffbe6;
+    border: 1.5px solid #ffe082;
+    border-radius: 12px;
+    padding: 18px 18px 12px 18px;
+}
+.payment-info b {
+    color: #e6b800;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+#totalPembayaran {
+    font-size: 2em;
+    color: #e6b800;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.payment-info button,
+.bank-info button {
+    margin-top: 10px;
+    padding: 6px 18px;
+    border-radius: 6px;
+    border: 1px solid #ffe082;
+    background: #fffbe6;
+    cursor: pointer;
+    font-weight: 500;
+}
+.bank-info {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.bank-info img {
+    height: 38px;
+    vertical-align: middle;
+}
+.bank-info span {
+    display: block;
+    margin: 0 0 2px 0;
+}
+.detail-btn {
+    margin-top: 24px;
+    width: 100%;
+    background: #ffe082;
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.detail-btn:hover {
+    background: #ffe082cc;
+}
+#successModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+#successModal .modal-content {
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 12px;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 2px 16px #0002;
+    margin: 80px auto 0 auto;
+}
+#successModal .modal-content h3 {
+    color: #27ae60;
+    margin-bottom: 16px;
+}
+#successModal .modal-content button {
+    margin-top: 18px;
+    padding: 8px 24px;
+    background: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+@media (max-width: 900px) {
+    .order-form {
+        flex-direction: column;
+        max-width: 98vw;
+    }
+    .order-form > div {
+        min-width: 0;
+    }
+}

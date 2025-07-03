@@ -6,11 +6,6 @@
                     <span>&#128202;</span>
                 </a>
             </li>
-
-            <!-- <li>
-                <a href="{{ route('pemesanan.index') }}" title="Pemesanan">
-                    <span>&#128179;</span>
-                </a> -->
             <li>
                 <a href="{{ route('kontrak.saya') }}" title="Kontrak Saya">
                     <span>&#128221;</span>

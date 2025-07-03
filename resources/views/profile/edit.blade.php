@@ -14,6 +14,13 @@
     : asset('images/default-avatar.png') }}" alt="Profile Photo" class="profile-avatar"
                             style="width:100px;height:100px;object-fit:cover;border-radius:50%;border:3px solid #ffe082;">
                     </div>
+                    <div class="profile-form-group" style="text-align:center;">
+                        <input type="file" name="foto_profile" id="foto_profile" accept="image/*"
+                            style="margin-top:10px;">
+                        @error('foto_profile')
+                            <div class="error" style="color:red;">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="profile-form-group">
                         <label for="nama">Full Name</label>
                         <input type="text" id="nama" name="nama" value="{{ old('nama', $user->nama) }}" required>
@@ -38,13 +45,6 @@
                         </select>
                         @error('gender') <div class="error" style="color:red;">{{ $message }}</div> @enderror
                     </div>
-                    <div class="profile-form-group" style="text-align:center;">
-                        <input type="file" name="foto_profile" id="foto_profile" accept="image/*"
-                            style="margin-top:10px;">
-                        @error('foto_profile')
-                            <div class="error" style="color:red;">{{ $message }}</div>
-                        @enderror
-                    </div>
                     <div class="profile-form-actions" style="margin-top:20px;">
                         <a href="{{ route('profile.show') }}" class="profile-btn-back"
                             style="background:#ffe082;color:#333;padding:8px 20px;border-radius:6px;text-decoration:none;">Back</a>
@@ -61,8 +61,8 @@
     @vite([
         'resources/css/profile.css',
         'resources/js/profile.js',
-        'resources/css/dashboard.css',
-        'resources/js/dashboard.js'
+        'resources/css/pengguna/dashboard.css',
+        'resources/js/pengguna/dashboard.js'
     ])
     <script>
         // Preview foto sebelum upload

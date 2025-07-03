@@ -1,0 +1,57 @@
+[
+    {
+        "question": "Bagaimana cara melihat profil saya?",
+        "keywords": ["cek profil", "lihat profil", "profile", "akun saya"],
+        "answer": "Anda dapat melihat profil Anda melalui menu <a href=\"http://127.0.0.1:8000/profile\">Profil</a>."
+    },
+    {
+        "question": "Bagaimana cara mengedit profil?",
+        "keywords": [
+            "edit profil",
+            "ubah profil",
+            "ganti profil",
+            "update profile"
+        ],
+        "answer": "Untuk mengedit profil, silakan buka <a href=\"http://127.0.0.1:8000/profile/edit\">Edit Profil</a> lalu ubah data yang diinginkan."
+    },
+    {
+        "question": "Bagaimana cara melihat detail kamar?",
+        "keywords": ["detail kamar", "info kamar", "lihat kamar"],
+        "answer": "Anda dapat melihat detail kamar melalui menu kamar atau klik kamar yang tersedia pada <a href=\"http://127.0.0.1:8000/dashboard\">Dashboard</a>."
+    },
+    {
+        "question": "Bagaimana cara melihat kamar yang tersedia?",
+        "keywords": ["kamar tersedia", "kamar kosong", "daftar kamar"],
+        "answer": "Kamar yang tersedia dapat dilihat pada halaman <a href=\"http://127.0.0.1:8000/dashboard\">Dashboard</a>."
+    },
+    {
+        "question": "Bagaimana cara memesan kamar?",
+        "keywords": ["pesan kamar", "booking kamar", "sewa kamar"],
+        "answer": "Untuk memesan kamar, silakan pilih kamar yang diinginkan pada <a href=\"http://127.0.0.1:8000/dashboard\">Dashboard</a> lalu klik tombol 'Pesan Sekarang'."
+    },
+    {
+        "question": "Bagaimana cara melihat keluhan saya?",
+        "keywords": ["keluhan saya", "tampilan keluhan", "daftar keluhan"],
+        "answer": "Keluhan Anda dapat dilihat pada menu <a href=\"http://127.0.0.1:8000/keluhan\">Keluhan</a>."
+    },
+    {
+        "question": "Bagaimana cara membuat keluhan?",
+        "keywords": ["buat keluhan", "tambah keluhan", "lapor masalah"],
+        "answer": "Untuk membuat keluhan, silakan buka menu <a href=\"http://127.0.0.1:8000/keluhan/form\">Buat Keluhan</a> dan isi form yang tersedia."
+    },
+    {
+        "question": "Bagaimana cara melihat notifikasi?",
+        "keywords": ["notifikasi", "pemberitahuan", "lihat notifikasi"],
+        "answer": "Notifikasi dapat diakses melalui menu <a href=\"http://127.0.0.1:8000/notifikasi\">Notifikasi</a>. Semua pemberitahuan terkait akun dan aktivitas Anda akan muncul di sini."
+    },
+    {
+        "question": "Bagaimana cara melihat kontrak saya?",
+        "keywords": ["kontrak", "lihat kontrak", "perjanjian"],
+        "answer": "Kontrak Anda dapat dilihat pada menu <a href=\"http://127.0.0.1:8000/kontrak-saya\">Kontrak Saya</a> yang berisi detail perjanjian sewa."
+    },
+    {
+        "question": "Bagaimana cara melakukan pembayaran?",
+        "keywords": ["pembayaran", "bayar", "halaman pembayaran"],
+        "answer": "Untuk melakukan pembayaran, silakan kunjungi <a href=\"http://127.0.0.1:8000/kontrak-saya\">Halaman Pembayaran</a>. Fitur pembayaran mendukung transfer bank dan e-wallet."
+    }
+]

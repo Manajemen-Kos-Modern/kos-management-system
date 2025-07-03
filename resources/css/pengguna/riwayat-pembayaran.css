@@ -1,0 +1,77 @@
+.riwayat-header {
+    background: #fff9db;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.riwayat-header h2 {
+    color: #e59866;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0;
+}
+.riwayat-table-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px #0001;
+    padding: 0;
+}
+.riwayat-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+.riwayat-table th {
+    padding: 8px;
+    border-bottom: 2px solid #e59866;
+    background: #fff9db;
+    color: #e59866;
+    font-weight: 600;
+}
+.riwayat-table td {
+    padding: 8px;
+    border-bottom: 2px solid #222;
+    background: #fff;
+}
+.riwayat-table td span {
+    font-weight: bold;
+}
+.riwayat-table td .dibayar {
+    color: green;
+}
+.riwayat-table td .menunggu {
+    color: orange;
+}
+.riwayat-table td .gagal {
+    color: red;
+}
+@media (max-width: 700px) {
+    .riwayat-table,
+    .riwayat-table thead,
+    .riwayat-table tbody,
+    .riwayat-table th,
+    .riwayat-table td,
+    .riwayat-table tr {
+        display: block;
+    }
+    .riwayat-table th {
+        display: none;
+    }
+    .riwayat-table td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        margin-bottom: 8px;
+    }
+    .riwayat-table td:before {
+        position: absolute;
+        left: 10px;
+        top: 8px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #e59866;
+        content: attr(data-label);
+    }
+}

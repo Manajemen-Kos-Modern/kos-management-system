@@ -34,11 +34,14 @@
                 </form>
             </section>
         </main>
+        <x-chatboot />
     </div>
     @vite([
         'resources/css/profile.css',
         'resources/js/profile.js',
-        'resources/css/dashboard.css',
-        'resources/js/dashboard.js'
+        'resources/css/pengguna/dashboard.css',
+        'resources/js/pengguna/dashboard.js',
+        'resources/css/pengguna/chatboot.css',
+        'resources/js/pengguna/chatboot.js'
     ])
 </x-app-layout>

@@ -2,13 +2,13 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KamarController;
-use App\Http\Controllers\PemesananController;
-use App\Http\Controllers\NotifikasiController;
-use App\Http\Controllers\KeluhanController;
+use App\Http\Controllers\Pengguna\DashboardController;
+use App\Http\Controllers\Pengguna\KamarController;
+use App\Http\Controllers\Pengguna\KeluhanController;
+use App\Http\Controllers\Pengguna\NotifikasiController;
+use App\Http\Controllers\Pengguna\PembayaranController;
+use App\Http\Controllers\Pengguna\PemesananController;
 
 
 Route::get('/', function () {

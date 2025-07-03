@@ -50,7 +50,7 @@ class ProfileController extends Controller
         // Update data lain
         $user->fill($request->only(['nama', 'email', 'no_hp', 'gender']));
         if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
+            // $user->email_verified_at = null; (dibutuhkan jika verifikasi email diperlukan)
         }
         $user->save();
 
